@@ -10,6 +10,9 @@ exports.aggregate = functions.database
     // Only aggregate completed quizzes
     if (!result.completed) return;
 
+    // Only aggregate quizzes using 2.x viewer.
+    if (!event.params.quizId.match(/^(custom-*+|[0-9]+)(-preview)?$/)) return;
+
     admin
       .database()
       .ref(`/results/${event.params.quizId}/aggregate`)
