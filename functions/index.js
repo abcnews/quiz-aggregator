@@ -16,12 +16,25 @@ exports.aggregate = functions.database
       .transaction(data => {
         // First completed quiz.
         if (data === null) {
-          return { count: 1, average: result.score };
+          return {
+            completions: 1,
+            totalScore: result.score,
+            availableScore: result.value,
+            distribution: {
+              [result.score]: 1
+            }
+          };
         }
 
+        let distribution = data.distribution || {};
+
         return {
-          count: data.count + 1,
-          average: (data.average * data.count + result.score) / (data.count + 1)
+          completions: (data.completions || 0) + 1,
+          totalScore: (data.totalScore || 0) + result.score,
+          availableScore: (data.availableScore || 0) + result.value,
+          distribution: Object.assign({}, distribution, {
+            [result.score]: (distribution[result.score] || 0) + 1
+          })
         };
       });
   });
