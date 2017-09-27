@@ -1,5 +1,7 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+const utils = require('./utils');
+
 admin.initializeApp(functions.config().firebase);
 
 exports.aggregate = functions.database
@@ -11,9 +13,9 @@ exports.aggregate = functions.database
     if (!result.completed) return;
 
     // Only aggregate quizzes using 2.x viewer.
-    if (!event.params.quizId.match(/^(custom-*+|[0-9]+)(-preview)?$/)) return;
+    if (!event.params.quizId.match(utils.aggregateQuizIdMatcher)) return;
 
-    admin
+    return admin
       .database()
       .ref(`/results/${event.params.quizId}/aggregate`)
       .transaction(data => {
@@ -23,21 +25,15 @@ exports.aggregate = functions.database
             completions: 1,
             totalScore: result.score,
             availableScore: result.value,
-            distribution: {
-              [result.score]: 1
-            }
+            distribution: utils.createDistribution(result)
           };
         }
-
-        let distribution = data.distribution || {};
 
         return {
           completions: (data.completions || 0) + 1,
           totalScore: (data.totalScore || 0) + result.score,
           availableScore: (data.availableScore || 0) + result.value,
-          distribution: Object.assign({}, distribution, {
-            [result.score]: (distribution[result.score] || 0) + 1
-          })
+          distribution: utils.createDistribution(result, data.distribution)
         };
       });
   });
