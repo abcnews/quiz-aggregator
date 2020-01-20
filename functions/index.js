@@ -1,23 +1,23 @@
-const functions = require('firebase-functions');
-const admin = require('firebase-admin');
-const utils = require('./utils');
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+const utils = require("./utils");
 
 admin.initializeApp(functions.config().firebase);
 
 exports.aggregate = functions.database
-  .ref('/responses/{quizId}/{responseId}')
-  .onWrite(event => {
-    const result = event.data.val();
+  .ref("/responses/{quizId}/{responseId}")
+  .onWrite(({ after }, { params: { quizId } }) => {
+    const result = after.val();
 
     // Only aggregate completed quizzes
     if (!result.completed) return;
 
     // Only aggregate quizzes using 2.x viewer.
-    if (!event.params.quizId.match(utils.aggregateQuizIdMatcher)) return;
+    if (!quizId.match(utils.aggregateQuizIdMatcher)) return;
 
     return admin
       .database()
-      .ref(`/results/${event.params.quizId}/aggregate`)
+      .ref(`/results/${quizId}/aggregate`)
       .transaction(data => {
         // First completed quiz.
         if (data === null) {
