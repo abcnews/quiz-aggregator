@@ -1,0 +1,64 @@
+{
+  "answered" : 9,
+  "completed" : false,
+  "remaining" : 1,
+  "responses" : {
+    "4b0599c0-392a-11eb-9191-f102d831337d" : {
+      "responses" : [ "6f168a90-392a-11eb-9191-f102d831337d" ],
+      "score" : 0,
+      "type" : "multipleChoiceSimple",
+      "value" : 1
+    },
+    "7baec080-39eb-11eb-8665-5f21cb62abb7" : {
+      "responses" : [ "8518b9a0-39eb-11eb-8665-5f21cb62abb7" ],
+      "score" : 1,
+      "type" : "multipleChoiceSimple",
+      "value" : 1
+    },
+    "7e7e1060-392b-11eb-9191-f102d831337d" : {
+      "responses" : [ "a85f7fe0-392b-11eb-9191-f102d831337d" ],
+      "score" : 1,
+      "type" : "multipleChoiceSimple",
+      "value" : 1
+    },
+    "a5601800-392a-11eb-9191-f102d831337d" : {
+      "responses" : [ "b29a04e0-392a-11eb-9191-f102d831337d" ],
+      "score" : 0,
+      "type" : "multipleChoiceSimple",
+      "value" : 1
+    },
+    "ae0df460-39eb-11eb-8665-5f21cb62abb7" : {
+      "responses" : [ "b5fd8280-39eb-11eb-8665-5f21cb62abb7" ],
+      "score" : 0,
+      "type" : "multipleChoiceSimple",
+      "value" : 1
+    },
+    "d0c0dbd0-39eb-11eb-8665-5f21cb62abb7" : {
+      "responses" : [ "d5f4f370-39eb-11eb-8665-5f21cb62abb7" ],
+      "score" : 1,
+      "type" : "multipleChoiceSimple",
+      "value" : 1
+    },
+    "d219fbe0-392a-11eb-9191-f102d831337d" : {
+      "responses" : [ "ffcbd450-392a-11eb-9191-f102d831337d" ],
+      "score" : 1,
+      "type" : "multipleChoiceSimple",
+      "value" : 1
+    },
+    "d81c4380-392b-11eb-9191-f102d831337d" : {
+      "responses" : [ "e605f860-392b-11eb-9191-f102d831337d" ],
+      "score" : 0,
+      "type" : "multipleChoiceSimple",
+      "value" : 1
+    },
+    "f4afecc0-39eb-11eb-8665-5f21cb62abb7" : {
+      "responses" : [ "0326ed80-39ec-11eb-8665-5f21cb62abb7" ],
+      "score" : 1,
+      "type" : "multipleChoiceSimple",
+      "value" : 1
+    }
+  },
+  "score" : 5,
+  "session" : "186f6df0-3c78-11eb-9b12-69c0b9414a27",
+  "value" : 9
+}
