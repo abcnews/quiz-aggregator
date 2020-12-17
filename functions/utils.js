@@ -1,4 +1,8 @@
-module.exports = function createDistribution(result, dist = {}) {
+module.exports.quizIdMatcher = /^(custom-.+|[0-9]+)(-preview)?$/;
+module.exports.createDistribution = function createDistribution(
+  result,
+  dist = {}
+) {
   const newDistribution = {};
   for (let x1 = Math.ceil(result.value + 1); --x1; ) {
     let x0 = x1 - 1;
